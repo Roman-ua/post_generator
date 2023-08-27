@@ -4,6 +4,7 @@ import positionImg from '../assets/images/fi-rr-user.svg'
 import salaryImg from '../assets/images/fi-rr-usd-square.svg'
 import locationImg from '../assets/images/free-icon-font-marker.png'
 import readMoreImg from '../assets/images/free-icon-font-angle-small-down.png'
+import logoImg from '../assets/images/logo.png'
 
 const percentCalculator = (num: number, pers: number) => {
   return Math.round((num * pers) / 100)
@@ -36,6 +37,8 @@ const imgGenerator = (
   locationIcon.src = locationImg
   const readMoreIcon = new Image()
   readMoreIcon.src = readMoreImg
+  const logoIcon = new Image()
+  logoIcon.src = logoImg
 
   canvas.width = 1280
   canvas.height = 606
@@ -60,7 +63,7 @@ const imgGenerator = (
       // company
       ctx.font = 'normal 60px Arial'
       ctx.fillStyle = 'white'
-      ctx.fillText('Компания - ', 100, 212)
+      ctx.fillText('Компанія - ', 100, 212)
 
       ctx.font = 'bold 60px Arial'
       ctx.fillStyle = '#314d64'
@@ -77,11 +80,11 @@ const imgGenerator = (
       ctx.fillText(position, 360, 290)
       //position
 
-      //Logo
-      ctx.font = 'bold 100px Arial'
-      ctx.fillStyle = '#314d64'
-      ctx.fillText('LOGO', 55, 510)
-      //Logo
+      // //Logo
+      // ctx.font = 'bold 100px Arial'
+      // ctx.fillStyle = '#314d64'
+      // ctx.fillText('LOGO', 55, 510)
+      // //Logo
 
       //Salary
       ctx.font = 'normal 40px Arial'
@@ -152,6 +155,15 @@ const imgGenerator = (
             canvas.height - 20,
             readMoreIcon.width - percentCalculator(readMoreIcon.width, 95),
             readMoreIcon.height - percentCalculator(readMoreIcon.height, 95)
+          )
+        }
+        logoIcon.onload = () => {
+          ctx.drawImage(
+            logoIcon,
+            -60,
+            270,
+            logoIcon.width - percentCalculator(logoIcon.width, 90),
+            logoIcon.height - percentCalculator(logoIcon.height, 90)
           )
           setImageState(canvas.toDataURL('image/jpeg'))
         }
